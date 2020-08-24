@@ -1,0 +1,38 @@
+<span class="help is-info"  *ngIf="isLoading">Loading...</span>
+
+<div *ngIf="!isLoading">
+    <h1>Click on currency name to see is's history</h1>
+    <div *ngIf="selectedCurrency">
+        <button class="button is-link" (click)="getCurrencyRates()">Undo currency select</button>
+        <br/><br/>
+    </div>
+
+    <mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="currency">
+        <mat-header-cell *matHeaderCellDef> Currency </mat-header-cell>
+        <mat-cell *matCellDef="let row" (click)="getCurrencyRate(row.currency)"> {{row.currency}} </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="rate">
+        <mat-header-cell *matHeaderCellDef> Rate to EUR </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.rate}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="recordDate">
+            <mat-header-cell *matHeaderCellDef> Record date </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.recordDate}} </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="['id', 'currency', 'rate', 'recordDate']"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: ['id', 'currency', 'rate', 'recordDate']"></mat-row>
+    </mat-table>
+</div>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+
+

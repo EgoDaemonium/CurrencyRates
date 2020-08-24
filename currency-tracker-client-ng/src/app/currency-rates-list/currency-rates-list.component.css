@@ -1,0 +1,19 @@
+.mat-column-id {
+    flex: 0 0 100px;
+}
+
+.mat-column-currency {
+    cursor: pointer;
+}
+
+.mat-header-cell {
+    cursor: unset;
+}
+
+/*.mat-column-rate {
+    flex: 0 0 100px;
+}
+
+.mat-column-recordDate {
+    flex: 0 0 100px;
+} */
